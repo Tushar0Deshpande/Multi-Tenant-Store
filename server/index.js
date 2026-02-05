@@ -4,22 +4,28 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
+
+// 1. MIDDLEWARE (Must come BEFORE routes)
 app.use(express.json());
-app.use(cors());
 
-// DB Connection
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("✅ MongoDB Connected"))
-    .catch(err => console.error(err));
-
-// Routes
-app.use('/api/auth', require('./routes/authRoutes'));
-// You would do the same for productRoutes...
-app.use('/api/products', require('./routes/productRoutes'));
+// Configure CORS properly for your Vercel deployment
 app.use(cors({
-    origin: 'https://multi-tenant-store.vercel.app/', // Your Vercel URL
-    credentials: true
+    // REMOVED the trailing slash from your URL to prevent matching errors
+    origin: 'https://multi-tenant-store-5nssba5bd-tushars-projects-0b3a396a.vercel.app', 
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
+// 2. DB CONNECTION
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("✅ MongoDB Connected"))
+    .catch(err => console.error("❌ MongoDB Error:", err));
+
+// 3. ROUTES
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/products', require('./routes/productRoutes'));
+
+// 4. SERVER START
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
