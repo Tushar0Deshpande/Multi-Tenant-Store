@@ -11,7 +11,7 @@ app.use(express.json());
 // Configure CORS properly for your Vercel deployment
 app.use(cors({
     // Allow your local React app
-    origin: 'https://multi-tenant-store.vercel.app', 
+    origin: 'https://multi-tenant-store-hh5g.vercel.app', 
     credentials: true
 }));
 

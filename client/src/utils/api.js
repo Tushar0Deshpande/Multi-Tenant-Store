@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
     // Change this back to localhost
-    baseURL: 'https://multi-tenant-store.onrender.com/api' 
+    baseURL: 'https://tushar-shopsaas-api.onrender.com/api' 
 });
 
 api.interceptors.request.use((config) => {
