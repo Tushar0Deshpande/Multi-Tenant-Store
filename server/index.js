@@ -10,11 +10,8 @@ app.use(express.json());
 
 // Configure CORS properly for your Vercel deployment
 app.use(cors({
-    // REMOVED the trailing slash from your URL to prevent matching errors
     origin: 'https://multi-tenant-store-5nssba5bd-tushars-projects-0b3a396a.vercel.app', 
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    credentials: true
 }));
 
 // 2. DB CONNECTION

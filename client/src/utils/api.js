@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://multi-tenant-store.onrender.com/api'
+    // IMPORTANT: Use your Render URL here
+    baseURL: 'https://multi-tenant-store.onrender.com/api' 
 });
 
 api.interceptors.request.use((config) => {
