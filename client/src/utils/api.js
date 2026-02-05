@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    // IMPORTANT: Use your Render URL here
+    // Change this back to localhost
     baseURL: 'https://multi-tenant-store.onrender.com/api' 
 });
 
