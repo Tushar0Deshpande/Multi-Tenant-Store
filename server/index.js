@@ -16,6 +16,10 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/api/auth', require('./routes/authRoutes'));
 // You would do the same for productRoutes...
 app.use('/api/products', require('./routes/productRoutes'));
+app.use(cors({
+    origin: 'https://multi-tenant-store.vercel.app/', // Your Vercel URL
+    credentials: true
+}));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
